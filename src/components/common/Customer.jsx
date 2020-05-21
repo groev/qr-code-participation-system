@@ -34,6 +34,9 @@ export default function Customer({ index, data, remove }) {
               <img src={phone} alt="Marker" />
               <div>{data.phone}</div>
             </div>
+            <div className="remove" onClick={e => remove(index)}>
+              Remove
+            </div>
           </div>
         )}
       </div>
