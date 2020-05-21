@@ -31,13 +31,13 @@ export default function Scan() {
   }
   function addCustomer(data) {
     if (!data) return;
-    const dataObject = JSON.parse(data);
-    setCustomers([...customValues, dataObject]);
+    setCustomers([...customValues, data]);
     setScanning(false);
   }
   function handleScan(data) {
     if (data) {
-      alert(data);
+      const dataObject = JSON.parse(data);
+      addCustomer(dataObject);
     }
   }
   function handleError() {

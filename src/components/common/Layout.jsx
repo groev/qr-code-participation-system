@@ -36,11 +36,11 @@ export default function Layout({ children }) {
             </li>
             <li>
               <Link onClick={() => setMenuOpen(false)} to="/scan">
-                Create new dataset
+                Create new data
               </Link>
             </li>
             <li>
-              <Link onClick={() => setMenuOpen(false)} to="/generate">
+              <Link onClick={() => setMenuOpen(false)} to="/generatenp">
                 Generate code
               </Link>
             </li>
