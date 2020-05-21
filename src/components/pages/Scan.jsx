@@ -36,9 +36,11 @@ export default function Scan() {
     setScanning(false);
   }
   function handleScan() {
+    alert("scanned");
     console.log("scanned");
   }
   function handleError() {
+    alert("error");
     console.log("error");
   }
   return (
@@ -79,7 +81,7 @@ export default function Scan() {
               delay={300}
               onError={handleError}
               onScan={handleScan}
-              style={{}}
+              style={{ width: "100%" }}
             />
 
             <img
