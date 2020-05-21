@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import scan from "../../assets/scan.svg";
 import QRCode from "qrcode.react";
-import { motion, animatePresence, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Generate() {
   const [data, setData] = useState({

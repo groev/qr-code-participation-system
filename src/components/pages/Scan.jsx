@@ -133,7 +133,7 @@ export default function Scan() {
               className="qr-wrapper"
             >
               <QrReader
-                delay={300}
+                delay={1000}
                 onError={handleError}
                 onScan={handleScan}
                 style={{ width: "100%" }}
