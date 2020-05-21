@@ -118,6 +118,16 @@ export default function Generate() {
             />
           </div>
         </div>
+        <div className="input-group">
+          <label htmlFor="Phone">Phone</label>
+          <input
+            value={data.phone}
+            id="Phone"
+            type="text"
+            name="phone"
+            onChange={e => handleChange(e)}
+          />
+        </div>
         <button onClick={e => generateCode()} className="btn bottom">
           <img src={scan} alt="scan" />
           Generate code

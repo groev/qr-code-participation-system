@@ -7,7 +7,6 @@ import close from "../../assets/close.svg";
 export default function Scan() {
   const [values, setValues] = useState({});
   const [scanning, setScanning] = useState(false);
-
   const [customers, setCustomers] = useState([
     {
       firstname: "Magnus",
@@ -31,7 +30,7 @@ export default function Scan() {
   }
   function addCustomer(data) {
     if (!data) return;
-    setCustomers([...customValues, data]);
+    setCustomers([...customers, data]);
     setScanning(false);
   }
   function handleScan(data) {
@@ -41,8 +40,7 @@ export default function Scan() {
     }
   }
   function handleError() {
-    alert("error");
-    console.log("error");
+    alert("Error while scanning.");
   }
   return (
     <div id="Scan" className="container">

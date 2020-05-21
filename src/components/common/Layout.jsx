@@ -15,7 +15,7 @@ export default function Layout({ children }) {
   return (
     <div id="Layout">
       <div id="Header">
-        Who was there
+        Who was there?
         <div id="MenuButton" onClick={() => setMenuOpen(true)}>
           <img src={menu} alt="Menu" />
         </div>
