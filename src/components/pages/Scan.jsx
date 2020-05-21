@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import QrReader from "react-qr-reader";
 import { Customer } from "../common";
 import scan from "../../assets/scan.svg";
+import close from "../../assets/close.svg";
 
 export default function Scan() {
   const [values, setValues] = useState({});
@@ -27,6 +28,12 @@ export default function Scan() {
   }
   function removeCustomer(idx) {
     setCustomers(values => values.filter((val, i) => i !== idx));
+  }
+  function addCustomer(data) {
+    if (!data) return;
+    const dataObject = JSON.parse(data);
+    setCustomers([...customValues, dataObject]);
+    setScanning(false);
   }
   function handleScan() {
     console.log("scanned");
@@ -73,6 +80,13 @@ export default function Scan() {
               onError={handleError}
               onScan={handleScan}
               style={{}}
+            />
+
+            <img
+              src={close}
+              onClick={() => setScanning(false)}
+              className="close"
+              alt="close"
             />
           </div>
         )}
