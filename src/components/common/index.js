@@ -1,4 +1,5 @@
 import Layout from "./Layout";
 import Customer from "./Customer";
+import Loader from "./Loader";
 
-export { Layout, Customer };
+export { Layout, Customer, Loader };

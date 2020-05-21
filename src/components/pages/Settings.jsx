@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import scan from "../../assets/scan.svg";
 import remove from "../../assets/remove.svg";
 
@@ -8,6 +9,12 @@ export default function Settings() {
   const [email, setEmail] = useState("");
   const [custom, setCustom] = useState("");
   const [customValues, setCustomValues] = useState([]);
+
+  const item = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+  };
+
   function addCustomValue() {
     if (!custom) return;
     setCustomValues([...customValues, custom]);
@@ -53,26 +60,43 @@ export default function Settings() {
           </div>
         </div>
         <div className="custom-values">
-          {customValues &&
-            customValues.map((value, idx) => {
-              return (
-                <div key={idx} className="custom-value">
-                  {value}
-                  <div
-                    className="remove"
-                    onClick={() => removeCustomValue(idx)}
+          <AnimatePresence>
+            {customValues &&
+              customValues.map((value, idx) => {
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ x: "100%" }}
+                    animate={{ x: 0 }}
+                    exit={{ x: "100%" }}
+                    className="custom-value"
                   >
-                    <img src={remove} alt="remove" />
-                  </div>
-                </div>
-              );
-            })}
+                    {value}
+                    <div
+                      className="remove"
+                      onClick={() => removeCustomValue(idx)}
+                    >
+                      <img src={remove} alt="remove" />
+                    </div>
+                  </motion.div>
+                );
+              })}
+          </AnimatePresence>
         </div>
       </div>
-      <button onClick={startScanning} className="btn bottom">
-        <img src={scan} alt="scan" />
-        Start scanning
-      </button>
+      {email && (
+        <motion.div
+          className="item"
+          initial="hidden"
+          animate="visible"
+          variants={item}
+        >
+          <button onClick={startScanning} className="btn bottom">
+            <img src={scan} alt="scan" />
+            Start scanning
+          </button>
+        </motion.div>
+      )}
     </div>
   );
 }

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import scan from "../../assets/scan.svg";
 import QRCode from "qrcode.react";
+import { motion, animatePresence, AnimatePresence } from "framer-motion";
 
 export default function Generate() {
   const [data, setData] = useState({
@@ -12,12 +13,25 @@ export default function Generate() {
     city: "",
     phone: ""
   });
+  const [errors, setErrors] = useState([]);
   const [generated, setGenerated] = useState(false);
   function handleChange(e) {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
+    if (value) {
+      setErrors(errors => errors.filter(error => error !== name));
+    }
   }
   function generateCode() {
+    const errorArray = [];
+    Object.keys(data).forEach(field => {
+      if (!data[field] || data[field] === "") errorArray.push(field);
+    });
+    setErrors(errorArray);
+    console.log(errorArray);
+    if (errorArray.length > 0) {
+      return;
+    }
     setGenerated(true);
   }
   function newCode() {
@@ -32,20 +46,33 @@ export default function Generate() {
       phone: ""
     });
   }
+  useEffect(() => {}, [errors]);
+  function checkError(field) {
+    if (errors.find(error => error === field)) {
+      return "error";
+    }
+  }
   return (
     <div id="Generate" className="container">
-      {generated && (
-        <div className="generate-wrapper">
-          <QRCode size={200} value={JSON.stringify(data)} />
-          <div>
-            Save the Image or make a screenshot to make the Code reusable.
-          </div>
-          <button onClick={e => newCode()} className="btn bottom">
-            <img src={scan} alt="scan" />
-            Generate another code
-          </button>
-        </div>
-      )}
+      <AnimatePresence>
+        {generated && (
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0 }}
+            className="generate-wrapper"
+          >
+            <QRCode size={200} value={JSON.stringify(data)} />
+            <div>
+              Save the Image or make a screenshot to make the Code reusable.
+            </div>
+            <button onClick={e => newCode()} className="btn bottom">
+              <img src={scan} alt="scan" />
+              Generate another code
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <h1>Fill out the form</h1>
       <div className="form">
         <div className="input-group">
@@ -55,6 +82,7 @@ export default function Generate() {
             id="Firstname"
             type="text"
             name="firstname"
+            className={checkError("firstname")}
             onChange={e => handleChange(e)}
           />
         </div>
@@ -65,6 +93,7 @@ export default function Generate() {
             id="Lastname"
             type="text"
             name="lastname"
+            className={checkError("lastname")}
             onChange={e => handleChange(e)}
           />
         </div>
@@ -76,6 +105,7 @@ export default function Generate() {
               id="Street"
               type="text"
               name="street"
+              className={checkError("street")}
               onChange={e => handleChange(e)}
             />
           </div>
@@ -89,6 +119,7 @@ export default function Generate() {
               id="Nr"
               type="text"
               name="nr"
+              className={checkError("nr")}
               onChange={e => handleChange(e)}
             />
           </div>
@@ -104,6 +135,7 @@ export default function Generate() {
               id="zip"
               type="text"
               name="zip"
+              className={checkError("zip")}
               onChange={e => handleChange(e)}
             />
           </div>
@@ -114,6 +146,7 @@ export default function Generate() {
               id="City"
               type="text"
               name="city"
+              className={checkError("city")}
               onChange={e => handleChange(e)}
             />
           </div>
@@ -125,6 +158,7 @@ export default function Generate() {
             id="Phone"
             type="text"
             name="phone"
+            className={checkError("phone")}
             onChange={e => handleChange(e)}
           />
         </div>

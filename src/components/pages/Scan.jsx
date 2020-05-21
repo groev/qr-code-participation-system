@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import QrReader from "react-qr-reader";
-import { Customer } from "../common";
+import emailjs from "emailjs-com";
+import { Customer, Loader } from "../common";
 import scan from "../../assets/scan.svg";
 import close from "../../assets/close.svg";
 import send from "../../assets/send.svg";
-import emailjs from "emailjs-com";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Scan() {
   const history = useHistory();
   const [values, setValues] = useState({});
   const [scanning, setScanning] = useState(false);
   const [customers, setCustomers] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   const customValues = JSON.parse(localStorage.getItem("customValues"));
 
   function setCustomValues(e) {
@@ -43,11 +44,12 @@ export default function Scan() {
   }
 
   function sendData() {
+    setLoading(true);
     let valueString = "<strong>Values: </strong><br />";
     let customerString = "<strong>Customers: </strong><br /";
 
     Object.keys(values).forEach(function(key) {
-      valueString += key + ": " + values[key] + "<br";
+      valueString += key + ": " + values[key] + ":<br />";
     });
 
     customers.forEach((customer, idx) => {
@@ -60,8 +62,9 @@ export default function Scan() {
       customerString += "City: " + customer.city + "<br />";
       customerString += "Phone: " + customer.phone + "<br /><br />";
     });
+
     const date = new Date();
-    console.log(customerString, valueString);
+
     let data = {
       email: localStorage.getItem("email"),
       customers: customerString,
@@ -78,15 +81,19 @@ export default function Scan() {
       )
       .then(
         function(response) {
+          setLoading(false);
           history.push("/success");
         },
         function(err) {
+          setLoading(false);
+
           alert("error while sending");
         }
       );
   }
   return (
     <div id="Scan" className="container">
+      {loading && <Loader />}
       <h1>Add customers</h1>
 
       <div className="form">
@@ -117,28 +124,39 @@ export default function Scan() {
           <img src={scan} alt="scan" />
           Add customer
         </button>{" "}
-        {scanning && (
-          <div className="qr-wrapper">
-            <QrReader
-              delay={300}
-              onError={handleError}
-              onScan={handleScan}
-              style={{ width: "100%" }}
-            />
+        <AnimatePresence>
+          {scanning && (
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              className="qr-wrapper"
+            >
+              <QrReader
+                delay={300}
+                onError={handleError}
+                onScan={handleScan}
+                style={{ width: "100%" }}
+              />
 
-            <img
-              src={close}
-              onClick={() => setScanning(false)}
-              className="close"
-              alt="close"
-            />
-          </div>
-        )}
+              <img
+                src={close}
+                onClick={() => setScanning(false)}
+                className="close"
+                alt="close"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-      <button onClick={e => sendData()} className="btn bottom">
-        <img src={send} alt="send" />
-        Send summary
-      </button>
+      {customers.length ? (
+        <button onClick={e => sendData()} className="btn bottom">
+          <img src={send} alt="send" />
+          Send summary
+        </button>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

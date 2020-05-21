@@ -137,6 +137,23 @@ body,
   }
 }
 
+#Loader {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  svg {
+    height: 100px;
+    width: 100px;
+  }
+}
+
 // Custom Styling for Pages
 
 #Settings {
@@ -285,5 +302,8 @@ body,
     padding: 0.5rem 0rem;
     width: 100%;
     border-radius: 0px;
+    &.error {
+      border-bottom: 1px solid red;
+    }
   }
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import more from "../../assets/more.svg";
 import phone from "../../assets/phone.svg";
 import marker from "../../assets/marker.svg";
@@ -13,33 +14,41 @@ export default function Customer({ index, data, remove }) {
     }
   }
   return (
-    <div className="customer" onClick={e => showHide()}>
-      <div className="head">
-        {index + 1}. {data.firstname} {data.lastname}
-        <div className="more">
-          {moreVisible && <img src={more} alt="more" className="less-img" />}
-          {!moreVisible && <img src={more} alt="more" className="more-img" />}
-        </div>
-        {moreVisible && (
-          <div className="content">
-            <div className="adress">
-              <img src={marker} alt="Marker" />
-              <div>
-                {data.street} {data.nr}
-                <br />
-                {data.zip} {data.city}
+    <AnimatePresence>
+      <motion.div
+        initial={{ x: "100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "100%" }}
+        className="customer"
+        onClick={e => showHide()}
+      >
+        <div className="head">
+          {index + 1}. {data.firstname} {data.lastname}
+          <div className="more">
+            {moreVisible && <img src={more} alt="more" className="less-img" />}
+            {!moreVisible && <img src={more} alt="more" className="more-img" />}
+          </div>
+          {moreVisible && (
+            <div className="content">
+              <div className="adress">
+                <img src={marker} alt="Marker" />
+                <div>
+                  {data.street} {data.nr}
+                  <br />
+                  {data.zip} {data.city}
+                </div>
+              </div>
+              <div className="phone">
+                <img src={phone} alt="Marker" />
+                <div>{data.phone}</div>
+              </div>
+              <div className="remove" onClick={e => remove(index)}>
+                Remove
               </div>
             </div>
-            <div className="phone">
-              <img src={phone} alt="Marker" />
-              <div>{data.phone}</div>
-            </div>
-            <div className="remove" onClick={e => remove(index)}>
-              Remove
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
+          )}
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 }
