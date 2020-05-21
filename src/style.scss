@@ -1,0 +1,225 @@
+// Import font from Google
+@import url("https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap");
+
+// Variables
+
+$small: 16px;
+$medium: 20px;
+$big: 50px;
+
+$mainColor: #000;
+
+// Global body styling
+
+body {
+  font-family: "Ropa Sans", sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  font-size: $small;
+}
+
+html,
+body,
+#root {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+// Global styles
+
+* {
+  box-sizing: border-box;
+}
+
+// Reused elements
+
+.btn {
+  background: $mainColor;
+  color: #fff;
+  border-radius: 0px;
+  appearance: none;
+  text-align: center;
+  padding: 0.7rem;
+  display: block;
+  width: 100%;
+  border: 0px;
+  font-family: "Ropa Sans", sans-serif;
+  font-size: $medium;
+  &.bottom {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    right: 2rem;
+    width: calc(100% - 4rem);
+  }
+  img {
+    margin-right: 0.5rem;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+// Layout Styling
+
+#Layout {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  #Header {
+    height: 80px;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    padding-left: 2rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #MenuButton {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #Menu {
+    font-size: $medium;
+    left: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: $mainColor;
+    color: #fff;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+      }
+    }
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+    }
+  }
+  #Content {
+    width: 100%;
+    height: calc(100% - 80px);
+    top: 80px;
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    .container {
+      padding: 2rem;
+    }
+  }
+  h1 {
+    color: $mainColor;
+    margin: 0;
+    font-size: $big;
+    font-weight: 300;
+  }
+}
+
+// Custom Styling for Pages
+
+#Settings {
+  .add {
+    width: 80px;
+    padding: 0.7rem 0rem;
+    text-align: center;
+    margin-left: 1rem;
+  }
+  .custom-values {
+    .custom-value {
+      background: #d9d9d9;
+      padding: 0.7rem;
+      font-size: 20px;
+      margin-bottom: 0.5rem;
+      position: relative;
+      .remove {
+        float: right;
+        position: absolute;
+        height: 100%;
+        width: 40px;
+        right: 0;
+        top: 0;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+#Scan {
+  .customers {
+    margin-bottom: 1rem;
+    .customer {
+      background: #d9d9d9;
+      .head {
+        padding: 1rem;
+        position: relative;
+        .more {
+          height: 50px;
+          width: 50px;
+          position: absolute;
+          right: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          top: 0;
+          .less-img {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+
+    .content {
+      padding-top: 2rem;
+      img {
+        float: left;
+      }
+      .adress {
+        margin-bottom: 1.5rem;
+      }
+      .adress > div,
+      .phone > div {
+        margin-left: 3rem;
+      }
+    }
+  }
+}
+
+// Styling Form Elements
+
+.form {
+  padding: 2rem 0rem;
+  label {
+    display: block;
+  }
+  .input-group {
+    margin-bottom: 2rem;
+  }
+  input[type="email"],
+  input[type="text"] {
+    font-family: "Ropa Sans", sans-serif;
+    appearance: none;
+    border: 0px;
+    border-bottom: 1px solid $mainColor;
+    font-size: 20px;
+    padding: 0.5rem 0rem;
+    width: 100%;
+    border-radius: 0px;
+  }
+}
