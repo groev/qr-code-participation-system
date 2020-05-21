@@ -1,23 +1,17 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import QrReader from "react-qr-reader";
 import { Customer } from "../common";
 import scan from "../../assets/scan.svg";
 import close from "../../assets/close.svg";
+import send from "../../assets/send.svg";
+import emailjs from "emailjs-com";
 
 export default function Scan() {
+  const history = useHistory();
   const [values, setValues] = useState({});
   const [scanning, setScanning] = useState(false);
-  const [customers, setCustomers] = useState([
-    {
-      firstname: "Magnus",
-      lastname: "Westhofen",
-      street: "Turner Str. 41",
-      nr: "41",
-      zip: "42569",
-      city: "Solingen",
-      phone: "0173   835 653"
-    }
-  ]);
+  const [customers, setCustomers] = useState([]);
 
   const customValues = JSON.parse(localStorage.getItem("customValues"));
   function setCustomValues(e) {
@@ -41,6 +35,49 @@ export default function Scan() {
   }
   function handleError() {
     alert("Error while scanning.");
+  }
+  function sendData() {
+    let valueString = "<strong>Values: </strong><br />";
+    let customerString = "<strong>Customers: </strong><br /";
+
+    Object.keys(values).forEach(function(key) {
+      valueString += key + ": " + values[key] + "<br";
+    });
+
+    customers.forEach((customer, idx) => {
+      customerString += "Customer #" + idx + 1 + "<br />";
+      customerString += "First name: " + customer.firstname + "<br />";
+      customerString += "Last name: " + customer.lastname + "<br />";
+      customerString += "Street: " + customer.street + "<br />";
+      customerString += "Nr: " + customer.nr + "<br />";
+      customerString += "Zip: " + customer.zip + "<br />";
+      customerString += "City: " + customer.city + "<br />";
+      customerString += "Phone: " + customer.phone + "<br /><br />";
+    });
+    const date = new Date();
+    console.log(customerString, valueString);
+    let data = {
+      email: localStorage.getItem("email"),
+      customers: customerString,
+      values: valueString,
+      date: date.toLocaleDateString() + " | " + date.toLocaleTimeString()
+    };
+
+    emailjs
+      .send(
+        "who_was_there_system",
+        "template_L67voDz3",
+        data,
+        "user_fCSj6yWmYQEZlAzVgepqf"
+      )
+      .then(
+        function(response) {
+          history.push("/success");
+        },
+        function(err) {
+          alert("error while sending");
+        }
+      );
   }
   return (
     <div id="Scan" className="container">
@@ -92,6 +129,10 @@ export default function Scan() {
           </div>
         )}
       </div>
+      <button onClick={e => sendData()} className="btn bottom">
+        <img src={send} alt="send" />
+        Send summary
+      </button>
     </div>
   );
 }

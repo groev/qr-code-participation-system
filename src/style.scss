@@ -48,6 +48,7 @@ body,
   border: 0px;
   font-family: "Ropa Sans", sans-serif;
   font-size: $medium;
+  text-decoration: none;
   &.bottom {
     position: absolute;
     bottom: 2rem;
@@ -171,6 +172,8 @@ body,
     margin-bottom: 1rem;
     .customer {
       background: #d9d9d9;
+      margin-bottom: 0.5rem;
+      font-size: $medium;
       .head {
         padding: 1rem;
         position: relative;
@@ -191,6 +194,7 @@ body,
     }
 
     .content {
+      font-size: $small;
       padding-top: 2rem;
       .remove {
         position: absolute;
@@ -219,6 +223,7 @@ body,
     left: 0;
     display: flex;
     align-items: center;
+    z-index: 99;
     > section {
       width: 100%;
     }
@@ -247,6 +252,15 @@ body,
     div {
       margin-top: 2rem;
       text-align: center;
+    }
+  }
+}
+
+#Success {
+  div {
+    margin-top: 3rem;
+    .email {
+      text-decoration: underline;
     }
   }
 }

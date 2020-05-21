@@ -40,7 +40,7 @@ export default function Layout({ children }) {
               </Link>
             </li>
             <li>
-              <Link onClick={() => setMenuOpen(false)} to="/generatenp">
+              <Link onClick={() => setMenuOpen(false)} to="/generate">
                 Generate code
               </Link>
             </li>
