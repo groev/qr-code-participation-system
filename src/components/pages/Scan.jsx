@@ -14,28 +14,34 @@ export default function Scan() {
   const [customers, setCustomers] = useState([]);
 
   const customValues = JSON.parse(localStorage.getItem("customValues"));
+
   function setCustomValues(e) {
     let newValues = values;
     newValues[e.target.name] = e.target.value;
     setValues(newValues);
   }
+
   function removeCustomer(idx) {
     setCustomers(values => values.filter((val, i) => i !== idx));
   }
+
   function addCustomer(data) {
     if (!data) return;
     setCustomers([...customers, data]);
     setScanning(false);
   }
+
   function handleScan(data) {
     if (data) {
       const dataObject = JSON.parse(data);
       addCustomer(dataObject);
     }
   }
+
   function handleError() {
     alert("Error while scanning.");
   }
+
   function sendData() {
     let valueString = "<strong>Values: </strong><br />";
     let customerString = "<strong>Customers: </strong><br /";
@@ -45,7 +51,7 @@ export default function Scan() {
     });
 
     customers.forEach((customer, idx) => {
-      customerString += "Customer #" + idx + 1 + "<br />";
+      customerString += "Customer #" + (idx + 1) + "<br />";
       customerString += "First name: " + customer.firstname + "<br />";
       customerString += "Last name: " + customer.lastname + "<br />";
       customerString += "Street: " + customer.street + "<br />";
