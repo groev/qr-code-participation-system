@@ -35,9 +35,10 @@ export default function Scan() {
     setCustomers([...customValues, dataObject]);
     setScanning(false);
   }
-  function handleScan() {
-    alert("scanned");
-    console.log("scanned");
+  function handleScan(data) {
+    if (data) {
+      alert(data);
+    }
   }
   function handleError() {
     alert("error");
