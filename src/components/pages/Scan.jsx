@@ -5,6 +5,8 @@ import scan from "../../assets/scan.svg";
 
 export default function Scan() {
   const [values, setValues] = useState({});
+  const [scanning, setScanning] = useState(false);
+
   const [customers, setCustomers] = useState([
     {
       firstname: "Magnus",
@@ -60,16 +62,20 @@ export default function Scan() {
               />
             ))}
         </div>
-        <button className="btn">
+        <button className="btn" onClick={() => setScanning(true)}>
           <img src={scan} alt="scan" />
           Add customer
         </button>{" "}
-        <QrReader
-          delay={300}
-          onError={handleError}
-          onScan={handleScan}
-          style={{ width: "100%" }}
-        />
+        {scanning && (
+          <div className="qr-wrapper">
+            <QrReader
+              delay={300}
+              onError={handleError}
+              onScan={handleScan}
+              style={{}}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
