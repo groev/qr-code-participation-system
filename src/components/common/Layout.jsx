@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import menu from "../../assets/menu.svg";
 import close from "../../assets/close.svg";
 
@@ -29,7 +29,23 @@ export default function Layout({ children }) {
             className="close"
           />
           <ul>
-            <li onClick={doLogout}>Log out</li>
+            <li>
+              <Link onClick={() => setMenuOpen(false)} to="/">
+                Start
+              </Link>
+            </li>
+            <li>
+              <Link onClick={() => setMenuOpen(false)} to="/scan">
+                Create new dataset
+              </Link>
+            </li>
+            <li>
+              <Link onClick={() => setMenuOpen(false)} to="/generate">
+                Generate code
+              </Link>
+            </li>
+
+            <li onClick={doLogout}>Clear data</li>
           </ul>
         </div>
       )}

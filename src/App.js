@@ -2,7 +2,7 @@ import React from "react";
 import "./style.scss";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Layout } from "./components/common";
-import { Settings, Scan } from "./components/pages";
+import { Settings, Scan, Generate } from "./components/pages";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Layout>
         <Switch>
           <Route path="/scan" component={Scan} />
-
+          <Route path="/generate" component={Generate} />
           <Route path="/" component={Settings} />
         </Switch>
       </Layout>
