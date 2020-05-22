@@ -68,7 +68,6 @@ export default function Scan() {
 			customerString += 'First name: ' + customer.firstname + '<br />';
 			customerString += 'Last name: ' + customer.lastname + '<br />';
 			customerString += 'Street: ' + customer.street + '<br />';
-			customerString += 'Nr: ' + customer.nr + '<br />';
 			customerString += 'Zip: ' + customer.zip + '<br />';
 			customerString += 'City: ' + customer.city + '<br />';
 			customerString += 'Phone: ' + customer.phone + '<br /><br />';

@@ -9,7 +9,6 @@ export default function Generate() {
 		firstname: '',
 		lastname: '',
 		street: '',
-		nr: '',
 		zip: '',
 		city: '',
 		phone: '',
@@ -41,7 +40,6 @@ export default function Generate() {
 			firstname: '',
 			lastname: '',
 			street: '',
-			nr: '',
 			zip: '',
 			city: '',
 			phone: '',
@@ -76,30 +74,33 @@ export default function Generate() {
 			</AnimatePresence>
 			<h1>Fill out the form</h1>
 			<div className="form">
-				<div className="input-group">
-					<label htmlFor="Firstname">First name</label>
-					<input
-						value={data.firstname}
-						id="Firstname"
-						type="text"
-						name="firstname"
-						className={checkError('firstname')}
-						onChange={(e) => handleChange(e)}
-					/>
-				</div>
-				<div className="input-group">
-					<label htmlFor="Lastname">Last name</label>
-					<input
-						value={data.lastname}
-						id="Lastname"
-						type="text"
-						name="lastname"
-						className={checkError('lastname')}
-						onChange={(e) => handleChange(e)}
-					/>
-				</div>
-				<div className="flex">
-					<div className="input-group" style={{ flexGrow: 2 }}>
+				<form>
+					{' '}
+					<div className="input-group">
+						<label htmlFor="Firstname">First name</label>
+						<input
+							value={data.firstname}
+							id="Firstname"
+							autoComplete="given-name"
+							type="text"
+							name="firstname"
+							className={checkError('firstname')}
+							onChange={(e) => handleChange(e)}
+						/>
+					</div>
+					<div className="input-group">
+						<label htmlFor="Lastname">Last name</label>
+						<input
+							value={data.lastname}
+							autoComplete="name"
+							id="Lastname"
+							type="text"
+							name="lastname"
+							className={checkError('lastname')}
+							onChange={(e) => handleChange(e)}
+						/>
+					</div>
+					<div className="input-group">
 						<label htmlFor="Street">Street</label>
 						<input
 							value={data.street}
@@ -110,59 +111,48 @@ export default function Generate() {
 							onChange={(e) => handleChange(e)}
 						/>
 					</div>
-					<div
-						className="input-group"
-						style={{ width: '50px', marginLeft: '1rem' }}
-					>
-						<label htmlFor="Nr">Nr</label>
+					<div className="flex">
+						<div
+							className="input-group"
+							style={{ width: '100px', marginRight: '1rem' }}
+						>
+							<label htmlFor="zip">ZIP</label>
+							<input
+								value={data.zip}
+								id="zip"
+								type="number"
+								name="zip"
+								className={checkError('zip')}
+								onChange={(e) => handleChange(e)}
+								autoComplete="postal-code"
+							/>
+						</div>
+						<div className="input-group" style={{ flexGrow: 2 }}>
+							<label htmlFor="City">City</label>
+							<input
+								value={data.city}
+								id="City"
+								type="text"
+								name="city"
+								className={checkError('city')}
+								onChange={(e) => handleChange(e)}
+							/>
+						</div>
+					</div>
+					<div className="input-group">
+						<label htmlFor="Phone">Phone</label>
 						<input
-							value={data.nr}
-							id="Nr"
-							type="text"
-							name="nr"
-							className={checkError('nr')}
+							value={data.phone}
+							id="Phone"
+							type="tel"
+							autoComplete="tel"
+							name="phone"
+							className={checkError('phone')}
 							onChange={(e) => handleChange(e)}
 						/>
 					</div>
-				</div>
-				<div className="flex">
-					<div
-						className="input-group"
-						style={{ width: '100px', marginRight: '1rem' }}
-					>
-						<label htmlFor="zip">ZIP</label>
-						<input
-							value={data.zip}
-							id="zip"
-							type="text"
-							name="zip"
-							className={checkError('zip')}
-							onChange={(e) => handleChange(e)}
-						/>
-					</div>
-					<div className="input-group" style={{ flexGrow: 2 }}>
-						<label htmlFor="City">City</label>
-						<input
-							value={data.city}
-							id="City"
-							type="text"
-							name="city"
-							className={checkError('city')}
-							onChange={(e) => handleChange(e)}
-						/>
-					</div>
-				</div>
-				<div className="input-group">
-					<label htmlFor="Phone">Phone</label>
-					<input
-						value={data.phone}
-						id="Phone"
-						type="text"
-						name="phone"
-						className={checkError('phone')}
-						onChange={(e) => handleChange(e)}
-					/>
-				</div>
+				</form>
+
 				<button onClick={(e) => generateCode()} className="btn bottom">
 					<img src={scan} alt="scan" />
 					Generate code

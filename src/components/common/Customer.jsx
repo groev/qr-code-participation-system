@@ -36,7 +36,7 @@ export default function Customer({ index, data, remove }) {
 							<div className="adress">
 								<img src={marker} alt="Marker" />
 								<div>
-									{data.street} {data.nr}
+									{data.street}
 									<br />
 									{data.zip} {data.city}
 								</div>
