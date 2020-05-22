@@ -17,7 +17,7 @@ export default function Scan() {
 	const [valuesFromStorage, setValuesFromStorage] = useState([]);
 	const [values, setValues] = useState({});
 	const [scanning, setScanning] = useState(false);
-	const [customers, setCustomers] = useState([]);
+	const [customers, setCustomers] = useState([{}]);
 	const [loading, setLoading] = useState(false);
 	useEffect(() => {
 		const customValues = JSON.parse(localStorage.getItem('customValues'));
@@ -57,21 +57,25 @@ export default function Scan() {
 
 	function sendData() {
 		setLoading(true);
-		let valueString = '<strong>Values: </strong><br />';
-		let customerString = '<strong>Customers: </strong><br />';
+		let valueString =
+			'<strong>' + i18n.t('Custom fields') + ': </strong><br />';
+		let customerString = '<strong>' + i18n.t('Customers') + ': </strong><br />';
 
 		Object.keys(values).forEach(function (key) {
 			valueString += key + ': ' + values[key] + '<br />';
 		});
 
 		customers.forEach((customer, idx) => {
-			customerString += 'Customer #' + (idx + 1) + '<br />';
-			customerString += 'First name: ' + customer.firstname + '<br />';
-			customerString += 'Last name: ' + customer.lastname + '<br />';
-			customerString += 'Street: ' + customer.street + '<br />';
-			customerString += 'Zip: ' + customer.zip + '<br />';
-			customerString += 'City: ' + customer.city + '<br />';
-			customerString += 'Phone: ' + customer.phone + '<br /><br />';
+			customerString += '' + i18n.t('Customer') + ' #' + (idx + 1) + '<br />';
+			customerString +=
+				i18n.t('First name') + ': ' + customer.firstname + '<br />';
+			customerString +=
+				i18n.t('Last name') + ': ' + customer.lastname + '<br />';
+			customerString += i18n.t('Street') + ':' + customer.street + '<br />';
+			customerString += i18n.t('ZIP') + ':' + customer.zip + '<br />';
+			customerString += i18n.t('City') + ': ' + customer.city + '<br />';
+			customerString +=
+				i18n.t('Phone') + ': ' + customer.phone + '<br /><br />';
 		});
 
 		const date = new Date();
@@ -80,6 +84,12 @@ export default function Scan() {
 			email: localStorage.getItem('email'),
 			customers: customerString,
 			values: valueString,
+			title:
+				i18n.t('New data has been submitted on') +
+				' ' +
+				date.toLocaleDateString() +
+				' | ' +
+				date.toLocaleTimeString(),
 			date: date.toLocaleDateString() + ' | ' + date.toLocaleTimeString(),
 		};
 
