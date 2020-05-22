@@ -92,7 +92,7 @@ export default function Generate() {
 						<label htmlFor="Lastname">Last name</label>
 						<input
 							value={data.lastname}
-							autoComplete="name"
+							autoComplete="family-name"
 							id="Lastname"
 							type="text"
 							name="lastname"
