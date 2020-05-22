@@ -1,3 +1,28 @@
+# QR code participation system
+
+Generate and scan qr codes to collect customer information.
+This can be handy in times of Covid 19.
+
+This project is build in react and uses:
+
+- react-router
+- axios
+- react-qr-reader
+- qrcode.react
+- framer-motion
+
+## Demo:
+
+Customers generate data on a landingpage:
+
+https://qcps.netlify.app/generate
+
+The company can scan those codes and send all the information to an email adress.
+
+Some custom fields can be added.
+
+https://qcps.netlify.app/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
