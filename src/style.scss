@@ -50,11 +50,7 @@ body,
 	font-size: $medium;
 	text-decoration: none;
 	&.bottom {
-		bottom: 2rem;
-		left: 2rem;
-		right: 2rem;
-		width: calc(100% - 4rem);
-		position: absolute;
+		margin-top: 2rem;
 	}
 	img {
 		margin-right: 0.5rem;
@@ -127,7 +123,6 @@ body,
 		-webkit-overflow-scrolling: touch;
 		.container {
 			min-height: 100%;
-			position: relative;
 			padding: 2rem;
 		}
 	}
@@ -261,7 +256,7 @@ body,
 		width: 100%;
 		background: #fff;
 		left: 0;
-		top: 0;
+		top: 80px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
