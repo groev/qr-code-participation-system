@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import i18n from '../../util/i18n';
 
 import more from '../../assets/more.svg';
 import phone from '../../assets/phone.svg';
@@ -46,7 +47,7 @@ export default function Customer({ index, data, remove }) {
 								<div>{data.phone}</div>
 							</div>
 							<div className="remove" onClick={(e) => remove(index)}>
-								Remove
+								{i18n.t('remove')}
 							</div>
 						</div>
 					)}

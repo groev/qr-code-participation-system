@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import QrReader from 'react-qr-reader';
 import axios from 'axios';
+import i18n from '../../util/i18n';
 
 import { config } from '../../util';
 import { Customer, Loader } from '../common';
@@ -26,7 +27,7 @@ export default function Scan() {
 			customValues.forEach((value) => {
 				setValues((values) => ({ ...values, [value]: '' }));
 			});
-	}, []);
+	}, [localStorage]);
 
 	function setCustomValues(e) {
 		const target = e.target;
@@ -97,7 +98,7 @@ export default function Scan() {
 	return (
 		<div id="Scan" className="container">
 			{loading && <Loader />}
-			<h1>Add customers</h1>
+			<h1> {i18n.t('Add customers')}</h1>
 			<div className="form">
 				{valuesFromStorage &&
 					valuesFromStorage.map((value, idx) => (
@@ -124,7 +125,7 @@ export default function Scan() {
 				</div>
 				<button className="btn" onClick={() => setScanning(true)}>
 					<img src={scan} alt="scan" />
-					Add customer
+					{i18n.t('Add customer')}
 				</button>{' '}
 				<AnimatePresence>
 					{scanning && (
@@ -154,7 +155,7 @@ export default function Scan() {
 			{customers.length ? (
 				<button onClick={(e) => sendData()} className="btn bottom">
 					<img src={send} alt="send" />
-					Send summary
+					{i18n.t('Send summary')}
 				</button>
 			) : (
 				''

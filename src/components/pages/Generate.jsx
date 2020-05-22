@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import QRCode from 'qrcode.react';
 import { motion, AnimatePresence } from 'framer-motion';
+import i18n from '../../util/i18n';
 
 import scan from '../../assets/scan.svg';
 
@@ -64,20 +65,22 @@ export default function Generate() {
 					>
 						<QRCode size={200} value={JSON.stringify(data)} />
 						<div>
-							Save the Image or make a screenshot to make the Code reusable.
+							{i18n.t(
+								'Save the Image or make a screenshot to make the Code reusable.'
+							)}
 						</div>
 						<button onClick={(e) => newCode()} className="btn bottom">
 							<img src={scan} alt="scan" />
-							Generate another code
+							{i18n.t('Generate another code')}
 						</button>
 					</motion.div>
 				)}
 			</AnimatePresence>
-			<h1>Fill out the form</h1>
+			<h1>{i18n.t('Fill out the form')}</h1>
 			<div className="form">
 				<form onSubmit={(e) => generateCode(e)} autocomplete="on">
 					<div className="input-group">
-						<label htmlFor="Firstname">First name</label>
+						<label htmlFor="Firstname">{i18n.t('First name')}</label>
 						<input
 							value={data.firstname}
 							id="Firstname"
@@ -89,7 +92,7 @@ export default function Generate() {
 						/>
 					</div>
 					<div className="input-group">
-						<label htmlFor="Lastname">Last name</label>
+						<label htmlFor="Lastname">{i18n.t('Last name')}</label>
 						<input
 							value={data.lastname}
 							autoComplete="family-name"
@@ -101,7 +104,7 @@ export default function Generate() {
 						/>
 					</div>
 					<div className="input-group">
-						<label htmlFor="Street">Street</label>
+						<label htmlFor="Street">{i18n.t('Street')}</label>
 						<input
 							value={data.street}
 							id="Street"
@@ -116,7 +119,7 @@ export default function Generate() {
 							className="input-group"
 							style={{ width: '100px', marginRight: '1rem' }}
 						>
-							<label htmlFor="zip">ZIP</label>
+							<label htmlFor="zip">{i18n.t('ZIP')}</label>
 							<input
 								value={data.zip}
 								id="zip"
@@ -128,7 +131,7 @@ export default function Generate() {
 							/>
 						</div>
 						<div className="input-group" style={{ flexGrow: 2 }}>
-							<label htmlFor="City">City</label>
+							<label htmlFor="City">{i18n.t('City')}</label>
 							<input
 								value={data.city}
 								id="City"
@@ -140,7 +143,7 @@ export default function Generate() {
 						</div>
 					</div>
 					<div className="input-group">
-						<label htmlFor="Phone">Phone</label>
+						<label htmlFor="Phone">{i18n.t('Phone')}</label>
 						<input
 							value={data.phone}
 							id="Phone"
@@ -153,7 +156,7 @@ export default function Generate() {
 					</div>
 					<button type="submit" className="btn bottom">
 						<img src={scan} alt="scan" />
-						Generate code
+						{i18n.t('Generate code')}
 					</button>
 				</form>
 			</div>

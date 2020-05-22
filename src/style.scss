@@ -8,12 +8,13 @@ $medium: 20px;
 $big: 50px;
 
 $mainColor: #000;
+$backGround: #fff;
 
 // Global body styling
 
 body {
 	font-family: 'Ropa Sans', sans-serif;
-	background: #fff;
+	background: $backGround;
 	margin: 0;
 	padding: 0;
 	font-size: $small;
@@ -38,7 +39,7 @@ body,
 
 .btn {
 	background: $mainColor;
-	color: #fff;
+	color: $backGround;
 	border-radius: 0px;
 	appearance: none;
 	text-align: center;
@@ -68,6 +69,7 @@ body,
 	height: 100%;
 	width: 100%;
 	#Header {
+		color: $mainColor;
 		height: 80px;
 		position: fixed;
 		width: 100%;
@@ -90,7 +92,7 @@ body,
 		height: 100%;
 		width: 100%;
 		background: $mainColor;
-		color: #fff;
+		color: $backGround;
 		z-index: 99;
 		display: flex;
 		align-items: center;
@@ -101,7 +103,7 @@ body,
 			li {
 				a {
 					text-decoration: none;
-					color: #fff;
+					color: $backGround;
 				}
 				margin-bottom: 1rem;
 				list-style: none;
@@ -232,7 +234,7 @@ body,
 		width: 100%;
 		height: calc(100vh - 80px);
 		position: fixed;
-		background: #000;
+		background: $mainColor;
 		left: 0;
 		top: 80px;
 		display: flex;
@@ -254,7 +256,7 @@ body,
 		position: fixed;
 		height: calc(100vh - 80px);
 		width: 100%;
-		background: #fff;
+		background: $backGround;
 		left: 0;
 		top: 80px;
 		display: flex;
@@ -284,6 +286,7 @@ body,
 .form {
 	padding: 2rem 0rem 3rem 0rem;
 	label {
+		color: $mainColor;
 		display: block;
 	}
 	.input-group {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import i18n from '../../util/i18n';
 
 import menu from '../../assets/menu.svg';
 import close from '../../assets/close.svg';
@@ -17,7 +18,7 @@ export default function Layout({ children }) {
 	return (
 		<div id="Layout">
 			<div id="Header">
-				QR code participation system
+				{i18n.t('AppTitle')}
 				<div id="MenuButton" onClick={() => setMenuOpen(true)}>
 					<img src={menu} alt="Menu" />
 				</div>
@@ -40,21 +41,21 @@ export default function Layout({ children }) {
 						<ul>
 							<li>
 								<Link onClick={() => setMenuOpen(false)} to="/">
-									Start
+									{i18n.t('Start')}
 								</Link>
 							</li>
 							<li>
 								<Link onClick={() => setMenuOpen(false)} to="/scan">
-									Create new data
+									{i18n.t('Create new data')}
 								</Link>
 							</li>
 							<li>
 								<Link onClick={() => setMenuOpen(false)} to="/generate">
-									Generate code
+									{i18n.t('Generate code')}
 								</Link>
 							</li>
 
-							<li onClick={doLogout}>Clear data</li>
+							<li onClick={doLogout}> {i18n.t('Clear data')}</li>
 						</ul>
 					</motion.div>
 				)}

@@ -9,10 +9,13 @@
     "axios": "^0.19.2",
     "emailjs-com": "^2.4.1",
     "framer-motion": "^1.11.0",
+    "i18next": "^19.4.4",
+    "i18next-browser-languagedetector": "^4.2.0",
     "node-sass": "^4.14.1",
     "qrcode.react": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-i18next": "^11.5.0",
     "react-qr-reader": "^2.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
