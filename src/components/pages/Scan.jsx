@@ -13,7 +13,7 @@ import send from '../../assets/send.svg';
 
 export default function Scan() {
 	const history = useHistory();
-	const [valuesFromStorage, setValuesFromStorage] = useState({});
+	const [valuesFromStorage, setValuesFromStorage] = useState([]);
 	const [values, setValues] = useState({});
 	const [scanning, setScanning] = useState(false);
 	const [customers, setCustomers] = useState([]);
@@ -98,7 +98,7 @@ export default function Scan() {
 			{loading && <Loader />}
 			<h1>Add customers</h1>
 			<div className="form">
-				{valuesFromStorage.length &&
+				{valuesFromStorage &&
 					valuesFromStorage.map((value, idx) => (
 						<div key={idx} className="input-group">
 							<label>{value}</label>
