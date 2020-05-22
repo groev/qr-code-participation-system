@@ -22,7 +22,8 @@ export default function Generate() {
 			setErrors((errors) => errors.filter((error) => error !== name));
 		}
 	}
-	function generateCode() {
+	function generateCode(e) {
+		e.preventDefault();
 		const errorArray = [];
 		Object.keys(data).forEach((field) => {
 			if (!data[field] || data[field] === '') errorArray.push(field);
@@ -74,8 +75,7 @@ export default function Generate() {
 			</AnimatePresence>
 			<h1>Fill out the form</h1>
 			<div className="form">
-				<form>
-					{' '}
+				<form onSubmit={(e) => generateCode(e)} autocomplete="on">
 					<div className="input-group">
 						<label htmlFor="Firstname">First name</label>
 						<input
@@ -151,12 +151,11 @@ export default function Generate() {
 							onChange={(e) => handleChange(e)}
 						/>
 					</div>
+					<button type="submit" className="btn bottom">
+						<img src={scan} alt="scan" />
+						Generate code
+					</button>
 				</form>
-
-				<button onClick={(e) => generateCode()} className="btn bottom">
-					<img src={scan} alt="scan" />
-					Generate code
-				</button>
 			</div>
 		</div>
 	);
