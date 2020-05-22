@@ -13,26 +13,7 @@ export default function Scan() {
 	const history = useHistory();
 	const [values, setValues] = useState({});
 	const [scanning, setScanning] = useState(false);
-	const [customers, setCustomers] = useState([
-		{
-			firstname: '',
-			lastname: '',
-			street: '',
-			nr: '',
-			zip: '',
-			city: '',
-			phone: '',
-		},
-		{
-			firstname: '',
-			lastname: '',
-			street: '',
-			nr: '',
-			zip: '',
-			city: '',
-			phone: '',
-		},
-	]);
+	const [customers, setCustomers] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const customValues = JSON.parse(localStorage.getItem('customValues'));
 
