@@ -1,4 +1,4 @@
 const config = {
-	mail: 'https://calc.12-05.de/mail.php',
+	mail: 'https://hereyoucanputyouremailservice.com/',
 };
 export default config;
