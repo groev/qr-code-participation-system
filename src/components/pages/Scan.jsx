@@ -21,9 +21,11 @@ export default function Scan() {
 	useEffect(() => {
 		const customValues = JSON.parse(localStorage.getItem('customValues'));
 		setValuesFromStorage(customValues);
-		customValues.forEach((value) => {
-			setValues((values) => ({ ...values, [value]: '' }));
-		});
+		if (!customValues) history.push('/');
+		customValues &&
+			customValues.forEach((value) => {
+				setValues((values) => ({ ...values, [value]: '' }));
+			});
 	}, []);
 
 	function setCustomValues(e) {
