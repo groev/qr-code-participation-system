@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import QrReader from 'react-qr-reader';
 import axios from 'axios';
+
 import { config } from '../../util';
 import { Customer, Loader } from '../common';
+
 import scan from '../../assets/scan.svg';
 import close from '../../assets/close.svg';
 import send from '../../assets/send.svg';
-import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Scan() {
 	const history = useHistory();
@@ -18,19 +20,12 @@ export default function Scan() {
 	const customValues = JSON.parse(localStorage.getItem('customValues'));
 
 	function setCustomValues(e) {
-		let newValues = values;
-		newValues[e.target.name] = e.target.value;
-		setValues(newValues);
-	}
-
-	function removeCustomer(idx) {
-		setCustomers((values) => values.filter((val, i) => i !== idx));
-	}
-
-	function addCustomer(data) {
-		if (!data) return;
-		setCustomers([...customers, data]);
-		setScanning(false);
+		const target = e.target;
+		setValues((prevValues) => {
+			prevValues[target.name] = target.value;
+			return prevValues;
+		});
+		console.log(values);
 	}
 
 	function handleScan(data) {
@@ -40,9 +35,18 @@ export default function Scan() {
 		}
 	}
 
-	function handleError() {
+	function handleScanError() {
 		alert('Error while scanning.');
-		return;
+	}
+
+	function addCustomer(data) {
+		if (!data) return;
+		setCustomers([...customers, data]);
+		setScanning(false);
+	}
+
+	function removeCustomer(idx) {
+		setCustomers((values) => values.filter((val, i) => i !== idx));
 	}
 
 	function sendData() {
@@ -90,7 +94,6 @@ export default function Scan() {
 		<div id="Scan" className="container">
 			{loading && <Loader />}
 			<h1>Add customers</h1>
-
 			<div className="form">
 				{customValues &&
 					customValues.map((value, idx) => (
@@ -129,7 +132,7 @@ export default function Scan() {
 						>
 							<QrReader
 								delay={1000}
-								onError={handleError}
+								onError={handleScanError}
 								onScan={handleScan}
 								style={{ width: '100%' }}
 							/>

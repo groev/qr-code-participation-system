@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+
 import menu from '../../assets/menu.svg';
 import close from '../../assets/close.svg';
 
@@ -9,8 +10,6 @@ export default function Layout({ children }) {
 	function doLogout() {
 		localStorage.removeItem('email');
 		localStorage.removeItem('customValues');
-		setMenuOpen(false);
-		history.push('/');
 		window.location.reload();
 	}
 	const [menuOpen, setMenuOpen] = useState(false);
