@@ -55,10 +55,10 @@ export default function Scan() {
 	function sendData() {
 		setLoading(true);
 		let valueString = '<strong>Values: </strong><br />';
-		let customerString = '<strong>Customers: </strong><br /';
+		let customerString = '<strong>Customers: </strong><br />';
 
 		Object.keys(values).forEach(function (key) {
-			valueString += key + ': ' + values[key] + ':<br />';
+			valueString += key + ': ' + values[key] + '<br />';
 		});
 
 		customers.forEach((customer, idx) => {
