@@ -1,25 +1,19 @@
 {
-  "short_name": "WhoWasThere",
-  "name": "Who was there?",
-  "icons": [
-    {
-      "src": "icon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "icon.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "icon.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+	"short_name": "QCPS",
+	"name": "QR code participation system",
+	"icons": [
+		{
+			"src": "icon.png",
+			"type": "image/png"
+		},
+		{
+			"src": "icon.png",
+			"type": "image/png",
+			"sizes": "142x142"
+		}
+	],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff"
 }

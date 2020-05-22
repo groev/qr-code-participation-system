@@ -1,5 +1,5 @@
 // Import font from Google
-@import url("https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
 
 // Variables
 
@@ -12,298 +12,300 @@ $mainColor: #000;
 // Global body styling
 
 body {
-  font-family: "Ropa Sans", sans-serif;
-  background: #fff;
-  margin: 0;
-  padding: 0;
-  font-size: $small;
+	font-family: 'Ropa Sans', sans-serif;
+	background: #fff;
+	margin: 0;
+	padding: 0;
+	font-size: $small;
 }
 
 html,
 body,
 #root {
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-  position: fixed;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	position: fixed;
 }
 
 // Global styles
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 // Reused elements
 
 .btn {
-  background: $mainColor;
-  color: #fff;
-  border-radius: 0px;
-  appearance: none;
-  text-align: center;
-  padding: 0.7rem;
-  display: block;
-  width: 100%;
-  border: 0px;
-  font-family: "Ropa Sans", sans-serif;
-  font-size: $medium;
-  text-decoration: none;
-  &.bottom {
-    position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    right: 2rem;
-    width: calc(100% - 4rem);
-  }
-  img {
-    margin-right: 0.5rem;
-  }
+	background: $mainColor;
+	color: #fff;
+	border-radius: 0px;
+	appearance: none;
+	text-align: center;
+	padding: 0.7rem;
+	display: block;
+	width: 100%;
+	border: 0px;
+	font-family: 'Ropa Sans', sans-serif;
+	font-size: $medium;
+	text-decoration: none;
+	&.bottom {
+		bottom: 2rem;
+		left: 2rem;
+		right: 2rem;
+		width: calc(100% - 4rem);
+		position: absolute;
+	}
+	img {
+		margin-right: 0.5rem;
+	}
 }
 
 .flex {
-  display: flex;
+	display: flex;
 }
 
 // Layout Styling
 
 #Layout {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  #Header {
-    height: 80px;
-    position: fixed;
-    width: 100%;
-    display: flex;
-    padding-left: 2rem;
-    align-items: center;
-    justify-content: space-between;
-  }
-  #MenuButton {
-    height: 80px;
-    width: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  #Menu {
-    font-size: $medium;
-    left: 0;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    background: $mainColor;
-    color: #fff;
-    z-index: 99;
-    display: flex;
-    align-items: center;
-    padding-left: 100px;
-    ul {
-      margin: 0;
-      padding: 0;
-      li {
-        a {
-          text-decoration: none;
-          color: #fff;
-        }
-        margin-bottom: 1rem;
-        list-style: none;
-      }
-    }
-    .close {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-    }
-  }
-  #Content {
-    width: 100%;
-    height: calc(100% - 80px);
-    top: 80px;
-    position: fixed;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    .container {
-      padding: 2rem;
-    }
-  }
-  h1 {
-    color: $mainColor;
-    margin: 0;
-    font-size: $big;
-    font-weight: 300;
-  }
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	#Header {
+		height: 80px;
+		position: fixed;
+		width: 100%;
+		display: flex;
+		padding-left: 2rem;
+		align-items: center;
+		justify-content: space-between;
+	}
+	#MenuButton {
+		height: 80px;
+		width: 80px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	#Menu {
+		font-size: $medium;
+		left: 0;
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		background: $mainColor;
+		color: #fff;
+		z-index: 99;
+		display: flex;
+		align-items: center;
+		padding-left: 100px;
+		ul {
+			margin: 0;
+			padding: 0;
+			li {
+				a {
+					text-decoration: none;
+					color: #fff;
+				}
+				margin-bottom: 1rem;
+				list-style: none;
+			}
+		}
+		.close {
+			position: absolute;
+			top: 30px;
+			right: 30px;
+		}
+	}
+	#Content {
+		width: 100%;
+		height: calc(100% - 80px);
+		top: 80px;
+		position: fixed;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		.container {
+			min-height: 100%;
+			position: relative;
+			padding: 2rem;
+		}
+	}
+	h1 {
+		color: $mainColor;
+		margin: 0;
+		font-size: $big;
+		font-weight: 300;
+	}
 }
 
 #Loader {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  svg {
-    height: 100px;
-    width: 100px;
-  }
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+	svg {
+		height: 100px;
+		width: 100px;
+	}
 }
 
 // Custom Styling for Pages
 
 #Settings {
-  .add {
-    width: 80px;
-    padding: 0.7rem 0rem;
-    text-align: center;
-    margin-left: 1rem;
-  }
-  .custom-values {
-    .custom-value {
-      background: #d9d9d9;
-      padding: 0.7rem;
-      font-size: 20px;
-      margin-bottom: 0.5rem;
-      position: relative;
-      .remove {
-        float: right;
-        position: absolute;
-        height: 100%;
-        width: 40px;
-        right: 0;
-        top: 0;
-        display: flex;
-        justify-content: center;
-      }
-    }
-  }
+	.add {
+		width: 80px;
+		padding: 0.7rem 0rem;
+		text-align: center;
+		margin-left: 1rem;
+	}
+	.custom-values {
+		.custom-value {
+			background: #d9d9d9;
+			padding: 0.7rem;
+			font-size: 20px;
+			margin-bottom: 0.5rem;
+			position: relative;
+			.remove {
+				float: right;
+				position: absolute;
+				height: 100%;
+				width: 40px;
+				right: 0;
+				top: 0;
+				display: flex;
+				justify-content: center;
+			}
+		}
+	}
 }
 
 #Scan {
-  .customers {
-    margin-bottom: 1rem;
-    .customer {
-      background: #d9d9d9;
-      margin-bottom: 0.5rem;
-      font-size: $medium;
-      .head {
-        padding: 1rem;
-        position: relative;
-        .more {
-          height: 50px;
-          width: 50px;
-          position: absolute;
-          right: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          top: 0;
-          .less-img {
-            transform: rotate(180deg);
-          }
-        }
-      }
-    }
+	.customers {
+		margin-bottom: 1rem;
+		.customer {
+			background: #d9d9d9;
+			margin-bottom: 0.5rem;
+			font-size: $medium;
+			.head {
+				padding: 1rem;
+				position: relative;
+				.more {
+					height: 50px;
+					width: 50px;
+					position: absolute;
+					right: 0;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					top: 0;
+					.less-img {
+						transform: rotate(180deg);
+					}
+				}
+			}
+		}
 
-    .content {
-      font-size: $small;
-      padding-top: 2rem;
-      .remove {
-        position: absolute;
-        right: 1rem;
-        bottom: 1rem;
-        text-decoration: underline;
-      }
-      img {
-        float: left;
-      }
-      .adress {
-        margin-bottom: 1.5rem;
-      }
-      .adress > div,
-      .phone > div {
-        margin-left: 1.5rem;
-      }
-    }
-  }
-  .qr-wrapper {
-    width: 100%;
-    height: calc(100% - 80px);
-    position: fixed;
-    background: #000;
-    top: 80px;
-    left: 0;
-    display: flex;
-    align-items: center;
-    z-index: 99;
-    > section {
-      width: 100%;
-    }
-    .close {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-    }
-  }
+		.content {
+			font-size: $small;
+			padding-top: 2rem;
+			.remove {
+				position: absolute;
+				right: 1rem;
+				bottom: 1rem;
+				text-decoration: underline;
+			}
+			img {
+				float: left;
+			}
+			.adress {
+				margin-bottom: 1.5rem;
+			}
+			.adress > div,
+			.phone > div {
+				margin-left: 1.5rem;
+			}
+		}
+	}
+	.qr-wrapper {
+		width: 100%;
+		height: calc(100% - 80px);
+		position: fixed;
+		background: #000;
+		top: 80px;
+		left: 0;
+		display: flex;
+		align-items: center;
+		z-index: 99;
+		> section {
+			width: 100%;
+		}
+		.close {
+			position: absolute;
+			top: 2rem;
+			right: 2rem;
+		}
+	}
 }
 
 #Generate {
-  .generate-wrapper {
-    position: fixed;
-    height: calc(100% - 80px);
-    width: 100%;
-    background: #fff;
-    top: 80px;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 99;
-    flex-direction: column;
-    padding: 2rem;
-    div {
-      margin-top: 2rem;
-      text-align: center;
-    }
-  }
+	.generate-wrapper {
+		position: fixed;
+		height: calc(100% - 80px);
+		width: 100%;
+		background: #fff;
+		top: 80px;
+		left: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 99;
+		flex-direction: column;
+		padding: 2rem;
+		div {
+			margin-top: 2rem;
+			text-align: center;
+		}
+	}
 }
 
 #Success {
-  div {
-    margin-top: 3rem;
-    .email {
-      text-decoration: underline;
-    }
-  }
+	div {
+		margin-top: 3rem;
+		.email {
+			text-decoration: underline;
+		}
+	}
 }
 
 // Styling Form Elements
 
 .form {
-  padding: 2rem 0rem;
-  label {
-    display: block;
-  }
-  .input-group {
-    margin-bottom: 2rem;
-  }
-  input[type="email"],
-  input[type="text"] {
-    font-family: "Ropa Sans", sans-serif;
-    appearance: none;
-    border: 0px;
-    border-bottom: 1px solid $mainColor;
-    font-size: 20px;
-    padding: 0.5rem 0rem;
-    width: 100%;
-    border-radius: 0px;
-    &.error {
-      border-bottom: 1px solid red;
-    }
-  }
+	padding: 2rem 0rem 3rem 0rem;
+	label {
+		display: block;
+	}
+	.input-group {
+		margin-bottom: 2rem;
+	}
+	input[type='email'],
+	input[type='text'] {
+		font-family: 'Ropa Sans', sans-serif;
+		appearance: none;
+		border: 0px;
+		border-bottom: 1px solid $mainColor;
+		font-size: 20px;
+		padding: 0.5rem 0rem;
+		width: 100%;
+		border-radius: 0px;
+		&.error {
+			border-bottom: 1px solid red;
+		}
+	}
 }
