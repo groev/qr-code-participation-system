@@ -13,19 +13,22 @@ import send from '../../assets/send.svg';
 
 export default function Scan() {
 	const history = useHistory();
+	const [valuesFromStorage, setValuesFromStorage] = useState({});
 	const [values, setValues] = useState({});
 	const [scanning, setScanning] = useState(false);
 	const [customers, setCustomers] = useState([]);
 	const [loading, setLoading] = useState(false);
-	const customValues = JSON.parse(localStorage.getItem('customValues'));
+	useEffect(() => {
+		const customValues = JSON.parse(localStorage.getItem('customValues'));
+		setValuesFromStorage(customValues);
+		customValues.forEach((value) => {
+			setValues((values) => ({ ...values, [value]: '' }));
+		});
+	}, []);
 
 	function setCustomValues(e) {
 		const target = e.target;
-		setValues((prevValues) => {
-			prevValues[target.name] = target.value;
-			return prevValues;
-		});
-		console.log(values);
+		setValues((values) => ({ ...values, [target.name]: target.value }));
 	}
 
 	function handleScan(data) {
@@ -95,8 +98,8 @@ export default function Scan() {
 			{loading && <Loader />}
 			<h1>Add customers</h1>
 			<div className="form">
-				{customValues &&
-					customValues.map((value, idx) => (
+				{valuesFromStorage.length &&
+					valuesFromStorage.map((value, idx) => (
 						<div key={idx} className="input-group">
 							<label>{value}</label>
 							<input
