@@ -8,13 +8,11 @@ import close from "../../assets/close.svg";
 
 export default function Layout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
-
   function doLogout() {
     localStorage.removeItem("email");
     localStorage.removeItem("customValues");
     window.location.reload();
   }
-
   return (
     <div id="Layout">
       <div id="Header">
