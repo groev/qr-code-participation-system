@@ -24,7 +24,6 @@ export default function Settings() {
     setCustomValues([...customValues, custom]);
     setCustom("");
   }
-
   function removeCustomValue(idx) {
     setCustomValues(values => values.filter((img, i) => i !== idx));
   }
