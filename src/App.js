@@ -18,7 +18,7 @@ function App() {
             <Route path="/generate" component={Generate} />
             <Route path="/settings" component={Settings} />
             {email && <Route path="/" component={Scan} />}
-            {!email && <Route path="/" component={Settings} />}
+            <Route path="/" component={Settings} />
           </Switch>
         </Layout>
       </BrowserRouter>
