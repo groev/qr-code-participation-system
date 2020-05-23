@@ -17,7 +17,7 @@ export default function Scan() {
   const [valuesFromStorage, setValuesFromStorage] = useState([]);
   const [values, setValues] = useState({});
   const [scanning, setScanning] = useState(false);
-  const [customers, setCustomers] = useState([{}]);
+  const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const customValues = JSON.parse(localStorage.getItem("customValues"));
@@ -27,7 +27,7 @@ export default function Scan() {
       customValues.forEach(value => {
         setValues(values => ({ ...values, [value]: "" }));
       });
-  }, [localStorage]);
+  }, [history]);
 
   function setCustomValues(e) {
     const target = e.target;
