@@ -60,11 +60,9 @@ export default function Scan() {
     let valueString =
       "<strong>" + i18n.t("Custom fields") + ": </strong><br />";
     let customerString = "<strong>" + i18n.t("Customers") + ": </strong><br />";
-
     Object.keys(values).forEach(function(key) {
       valueString += key + ": " + values[key] + "<br />";
     });
-
     customers.forEach((customer, idx) => {
       customerString += "" + i18n.t("Customer") + " #" + (idx + 1) + "<br />";
       customerString +=
@@ -77,9 +75,7 @@ export default function Scan() {
       customerString +=
         i18n.t("Phone") + ": " + customer.phone + "<br /><br />";
     });
-
     const date = new Date();
-
     let data = {
       email: localStorage.getItem("email"),
       customers: customerString,
@@ -92,10 +88,9 @@ export default function Scan() {
         date.toLocaleTimeString(),
       date: date.toLocaleDateString() + " | " + date.toLocaleTimeString()
     };
-
     axios
       .post(config.mail, { data })
-      .then(response => {
+      .then(() => {
         setLoading(false);
         history.push("/success");
       })
