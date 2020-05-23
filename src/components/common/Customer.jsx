@@ -16,7 +16,6 @@ export default function Customer({ index, data, remove }) {
       setMoreVisible(true);
     }
   }
-
   return (
     <AnimatePresence>
       <motion.div
