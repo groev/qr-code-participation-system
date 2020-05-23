@@ -14,8 +14,11 @@ export default function Generate() {
     city: "",
     phone: ""
   });
+
   const [errors, setErrors] = useState([]);
+  useEffect(() => {}, [errors]);
   const [generated, setGenerated] = useState(false);
+
   function handleChange(e) {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
@@ -23,6 +26,7 @@ export default function Generate() {
       setErrors(errors => errors.filter(error => error !== name));
     }
   }
+
   function generateCode(e) {
     e.preventDefault();
     const errorArray = [];
@@ -36,6 +40,7 @@ export default function Generate() {
     }
     setGenerated(true);
   }
+
   function newCode() {
     setGenerated(false);
     setData({
@@ -47,12 +52,13 @@ export default function Generate() {
       phone: ""
     });
   }
-  useEffect(() => {}, [errors]);
+
   function checkError(field) {
     if (errors.find(error => error === field)) {
       return "error";
     }
   }
+
   return (
     <div id="Generate" className="container">
       <AnimatePresence>
