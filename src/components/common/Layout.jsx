@@ -65,7 +65,6 @@ export default function Layout({ children }) {
           </motion.div>
         )}
       </AnimatePresence>
-
       <div id="Content">{children}</div>
     </div>
   );
