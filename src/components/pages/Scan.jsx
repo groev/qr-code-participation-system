@@ -17,7 +17,7 @@ export default function Scan() {
   const [valuesFromStorage, setValuesFromStorage] = useState([]);
   const [values, setValues] = useState({});
   const [scanning, setScanning] = useState(false);
-  const [customers, setCustomers] = useState([]);
+  const [customers, setCustomers] = useState([{}]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -90,13 +90,14 @@ export default function Scan() {
     };
     axios
       .post(config.mail, { data })
-      .then(() => {
+      .then(response => {
+        console.log(response);
         setLoading(false);
         history.push("/success");
       })
       .catch(error => {
         setLoading(false);
-        alert("Error while sending");
+        alert(error.response.data);
       });
   }
   return (
