@@ -97,7 +97,6 @@ export default function Scan() {
       .post(config.mail, { data })
       .then(response => {
         setLoading(false);
-        console.log(response);
         history.push("/success");
       })
       .catch(error => {
