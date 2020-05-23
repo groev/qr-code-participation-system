@@ -54,7 +54,7 @@ export default function Generate() {
   }
 
   function checkError(field) {
-    if (errors.find(error => error === field)) {
+    if (errors && errors.find(error => error === field)) {
       return "error";
     }
   }
