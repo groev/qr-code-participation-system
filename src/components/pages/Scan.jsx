@@ -34,7 +34,6 @@ export default function Scan() {
     const target = e.target;
     setValues(values => ({ ...values, [target.name]: target.value }));
   }
-
   function handleScan(data) {
     if (data) {
       const dataObject = JSON.parse(data);
