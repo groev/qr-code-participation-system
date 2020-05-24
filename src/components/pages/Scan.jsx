@@ -89,7 +89,11 @@ export default function Scan() {
       date: date.toLocaleDateString() + " | " + date.toLocaleTimeString()
     };
     axios
-      .post(config.mail, { data })
+      .post(config.mail, data, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
       .then(response => {
         console.log(response);
         setLoading(false);
