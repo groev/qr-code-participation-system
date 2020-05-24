@@ -17,7 +17,7 @@ export default function Scan() {
   const [valuesFromStorage, setValuesFromStorage] = useState([]);
   const [values, setValues] = useState({});
   const [scanning, setScanning] = useState(false);
-  const [customers, setCustomers] = useState([{}]);
+  const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -89,14 +89,7 @@ export default function Scan() {
       date: date.toLocaleDateString() + " | " + date.toLocaleTimeString()
     };
     axios
-      .post(config.mail, data, {
-        mode: "no-cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json"
-        },
-        credentials: "same-origin"
-      })
+      .post(config.mail, data)
       .then(response => {
         console.log(response);
         setLoading(false);

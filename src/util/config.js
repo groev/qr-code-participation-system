@@ -1,5 +1,5 @@
 const config = {
-  mail: "http://mail.westhofen.me/mail.php",
+  mail: "https://calc.12-05.de/mail.php",
   title: "QR code participation system"
 };
 export default config;
