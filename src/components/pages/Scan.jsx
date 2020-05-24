@@ -97,7 +97,11 @@ export default function Scan() {
       })
       .catch(error => {
         setLoading(false);
-        alert(error.response.data);
+        if (error.response) {
+          alert(error.response.data);
+        } else {
+          console.log(error);
+        }
       });
   }
   return (
