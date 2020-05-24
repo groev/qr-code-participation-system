@@ -100,7 +100,7 @@ export default function Scan() {
         if (error.response) {
           alert(error.response.data);
         } else {
-          console.log(error);
+          alert("Fehler aufgetreten");
         }
       });
   }
