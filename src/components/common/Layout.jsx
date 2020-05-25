@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import i18n from "../../util/i18n";
 
@@ -8,18 +8,26 @@ import close from "../../assets/close.svg";
 
 export default function Layout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const [email, setEmail] = useState(localStorage.getItem("email"));
+
   function doLogout() {
     localStorage.removeItem("email");
     localStorage.removeItem("customValues");
     window.location.reload();
   }
+
   return (
     <div id="Layout">
       <div id="Header">
         {i18n.t("AppTitle")}
-        <div id="MenuButton" onClick={() => setMenuOpen(true)}>
-          <img src={menu} alt="Menu" />
-        </div>
+        {location.pathname === "/generate" && !email ? (
+          ""
+        ) : (
+          <div id="MenuButton" onClick={() => setMenuOpen(true)}>
+            <img src={menu} alt="Menu" />
+          </div>
+        )}
       </div>
       <AnimatePresence>
         {menuOpen && (

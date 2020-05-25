@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import QrReader from "react-qr-reader";
-import axios from "axios";
 import i18n from "../../util/i18n";
-
-import { config } from "../../util";
-import { Customer, Loader } from "../common";
+import { Customer } from "../common";
 
 import scan from "../../assets/scan.svg";
 import close from "../../assets/close.svg";
@@ -18,7 +15,6 @@ export default function Scan() {
   const [values, setValues] = useState({});
   const [scanning, setScanning] = useState(false);
   const [customers, setCustomers] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const customValues = JSON.parse(localStorage.getItem("customValues"));
@@ -100,7 +96,6 @@ export default function Scan() {
 
   return (
     <div id="Scan" className="container">
-      {loading && <Loader />}
       <h1> {i18n.t("Add customers")}</h1>
       <div className="form">
         {valuesFromStorage &&
