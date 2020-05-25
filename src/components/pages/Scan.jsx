@@ -55,53 +55,6 @@ export default function Scan() {
     setCustomers(values => values.filter((val, i) => i !== idx));
   }
 
-  function sendData() {
-    setLoading(true);
-    let valueString = "<strong>" + i18n.t("Custom fields") + ": </strong>\r\n";
-    let customerString = "<strong>" + i18n.t("Customers") + ": </strong>\r\n";
-    Object.keys(values).forEach(function(key) {
-      valueString += key + ": " + values[key] + "\r\n";
-    });
-    customers.forEach((customer, idx) => {
-      customerString += "" + i18n.t("Customer") + " #" + (idx + 1) + "\r\n";
-      customerString +=
-        i18n.t("First name") + ": " + customer.firstname + "\r\n";
-      customerString += i18n.t("Last name") + ": " + customer.lastname + "\r\n";
-      customerString += i18n.t("Street") + ":" + customer.street + "\r\n";
-      customerString += i18n.t("ZIP") + ":" + customer.zip + "\r\n";
-      customerString += i18n.t("City") + ": " + customer.city + "\r\n";
-      customerString += i18n.t("Phone") + ": " + customer.phone + "\r\n\r\n";
-    });
-    const date = new Date();
-    let data = {
-      email: localStorage.getItem("email"),
-      customers: customerString,
-      values: valueString,
-      title:
-        i18n.t("New data has been submitted on") +
-        " " +
-        date.toLocaleDateString() +
-        " | " +
-        date.toLocaleTimeString(),
-      date: date.toLocaleDateString() + " | " + date.toLocaleTimeString()
-    };
-    axios
-      .post(config.mail, data)
-      .then(response => {
-        console.log(response);
-        setLoading(false);
-        history.push("/success");
-      })
-      .catch(error => {
-        setLoading(false);
-        if (error.response) {
-          alert(error.response.data);
-        } else {
-          alert("Fehler aufgetreten");
-        }
-      });
-  }
-
   function get_mailto_url() {
     const date = new Date();
     let valueString = i18n.t("Custom fields") + ": \r\n";
