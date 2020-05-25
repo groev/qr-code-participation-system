@@ -35,7 +35,8 @@ i18n.use(LanguageDetector).init({
         "Start scanning": "Scannen starten",
         Customer: "Kunde",
         Customers: "Kunden",
-        "New data has been submitted on": "Neuer Eintrag wurde gemacht am"
+        "New data has been submitted on": "Neuer Eintrag wurde gemacht am",
+        "New scan": "Neue Erfassung"
       }
     }
   },
