@@ -1,5 +1,5 @@
 const config = {
-  mail: "https://calc.12-05.de/mail.php",
-  title: "QR code participation system"
+	mail: process.env.REACT_APP_MAILURL,
+	title: 'QR code participation system',
 };
 export default config;
